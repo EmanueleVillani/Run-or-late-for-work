@@ -6,11 +6,13 @@ public class MoveLeft : MonoBehaviour
 {
     private float speed = 25;
     public PlayerController player;
+    public GameManager gm;
    
    
 
     void Start()
     {
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
@@ -25,6 +27,8 @@ public class MoveLeft : MonoBehaviour
         if(transform.position.x < -3 && gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
+           
+            gm.scoreInt++;
         }
        
     }
