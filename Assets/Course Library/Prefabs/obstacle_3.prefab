@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 8337377912012332904}
   - component: {fileID: 8459161411671121704}
   - component: {fileID: 2476749820469077864}
-  - component: {fileID: 745071425951296589}
   m_Layer: 0
   m_Name: obstacle_3
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,23 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119c0e413574840cabd360d71f54a5b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &745071425951296589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8337377912010110548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ba711c7f1404253bc3cd5952a3b1a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstaclePref:
-  - {fileID: 8029546412596927753, guid: 8f9a3f6f950db4ea2809794b594727b7, type: 3}
-  - {fileID: 6332442079777567263, guid: be699b5ce7bd84384be9c2399eb3f519, type: 3}
-  - {fileID: 5983933632704006617, guid: 2c97a0893cd6a4e0c9901852132af978, type: 3}
-  - {fileID: 8337377912010110548}
-  startDelay: 2
-  repeatRate: 2.5
-  idexObstacle: 0
+  player: {fileID: 0}

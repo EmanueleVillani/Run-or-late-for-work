@@ -9,12 +9,15 @@ public class PlayerController : MonoBehaviour
     public float gravityModifier;
     public bool isGrond = true;
     public float move;
+    public bool gameOver;
+   
 
     void Start()
     {
         
         playerRb = GetComponent<Rigidbody>();
         Physics.gravity *= gravityModifier;
+       
 
 
     }
@@ -22,6 +25,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (Input.GetKeyDown(KeyCode.Mouse0)&&isGrond)
         {
             playerRb.AddForce(Vector3.up * jumpForce , ForceMode.Impulse);
@@ -32,6 +37,13 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        isGrond = true;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrond = true;
+        }
+        else if (collision.gameObject.CompareTag("Obstacle")){
+            gameOver = true;
+            Debug.Log("GameOver");
+        }
     }
 }

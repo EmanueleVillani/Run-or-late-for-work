@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class SpawnerManager : MonoBehaviour
 {
-    public GameObject  obstaclePref;
+    private PlayerController player;
+    public GameObject [] obstaclePref;
     private Vector3 newPos = new Vector3(25, 0, 0);
-    public float startDelay = 2;
-    public float repeatRate = 2.5f;
+    public float startDelay = 4;
+    public float repeatRate = 4.5f;
+
    
     void Start()
     {
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
         InvokeRepeating("SpawnObstacle", startDelay, repeatRate);
     }
 
@@ -22,7 +25,11 @@ public class SpawnerManager : MonoBehaviour
 
     void SpawnObstacle()
     {
-         
-        Instantiate(obstaclePref, newPos, obstaclePref.transform.rotation);
+        if (!player.gameOver)
+        {
+            int indexPrefabs = Random.Range(0, 3);
+            Instantiate(obstaclePref[indexPrefabs], newPos, obstaclePref[indexPrefabs].transform.rotation);
+        }
+       
     }
 }
