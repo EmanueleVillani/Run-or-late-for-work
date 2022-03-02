@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private Animator playerAnim;
     private Rigidbody playerRb;
     public float jumpForce = 10;
     public float gravityModifier;
     public bool isGrond = true;
     public float move;
     public bool gameOver;
+    
    
 
     void Start()
     {
-        
+        playerAnim = GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
         Physics.gravity *= gravityModifier;
        
@@ -27,8 +29,11 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        if (Input.GetKeyDown(KeyCode.Mouse0)&&isGrond)
+        if (Input.GetKeyDown(KeyCode.Mouse0)&&isGrond&&!gameOver)
         {
+            playerAnim.SetTrigger("Jump_trig");
+            playerAnim.SetInteger("DeathType_int",1);
+            
             playerRb.AddForce(Vector3.up * jumpForce , ForceMode.Impulse);
             isGrond = false;
         }
@@ -37,6 +42,8 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+
+        
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrond = true;
@@ -45,5 +52,6 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
             Debug.Log("GameOver");
         }
+       
     }
 }
