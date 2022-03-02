@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public bool isGrond = true;
     public float move;
     public bool gameOver;
+    public GameObject button;
     
    
 
@@ -51,6 +52,8 @@ public class PlayerController : MonoBehaviour
         else if (collision.gameObject.CompareTag("Obstacle")){
             gameOver = true;
             Debug.Log("GameOver");
+            playerAnim.SetBool("Death_b", true);
+            button.SetActive(true);
         }
        
     }
